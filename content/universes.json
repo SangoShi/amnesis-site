@@ -1,0 +1,11 @@
+[
+  {
+    "slug": "amnesis",
+    "nameRu": "СЕКТОР_АМНЕЗИС_01",
+    "nameEn": "SECTOR_AMNESIS_01",
+    "descriptionRu": "Авторская вселенная Амнезис, населённая звероподобными существами — нумарами",
+    "descriptionEn": "The Amnesis universe, populated by beast-like creatures — numars",
+    "status": "active",
+    "order": 2
+  }
+]

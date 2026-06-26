@@ -1,0 +1,134 @@
+{
+  "nav": {
+    "home": "Home",
+    "collection": "Collection",
+    "search": "Search",
+    "admin": "Admin Panel",
+    "artefacts": "Artifacts",
+    "timeline": "Timeline",
+    "factions": "Factions"
+  },
+  "landing": {
+    "title": "SHINAGAVE'S BESTIARY",
+    "subtitle": "Character Database",
+    "about": {
+      "purpose": "Archive and systematization of all original characters",
+      "system": "Automated database with classification and search",
+      "security": "Access to full dossiers — by author's request"
+    },
+    "randomScan": "Detect Random Object",
+    "scanning": "Scanning...",
+    "scanSector": "SCANNING SECTOR...",
+    "signalsDetected": "SIGNALS DETECTED...",
+    "identifying": "IDENTIFYING OBJECT...",
+    "objectFound": "OBJECT FOUND"
+  },
+  "character": {
+    "status": "Status",
+    "classification": "Classification",
+    "mutations": "Mutations",
+    "location": "Location",
+    "gender": "Gender",
+    "description": "General Description",
+    "behavior": "Behavioral Patterns",
+    "codename": "Code Name",
+    "backToBestiary": "Back to Bestiary",
+    "related": "Related Objects",
+    "artefacts": "Artifacts",
+    "factions": "Factions",
+    "scanData": "Scan Data",
+    "hiddenMutation": "Hidden mutation detected: NEURAL_SYNC_7. Side effects: enhanced perception, temporal awareness.",
+    "restricted": "Classification: RESTRICTED // Level 3 access required"
+  },
+  "filters": {
+    "all": "All",
+    "active": "Active",
+    "inactive": "Inactive",
+    "frozen": "Frozen",
+    "unknown": "No Info"
+  },
+  "rarity": {
+    "green": "Safe",
+    "red": "Dangerous",
+    "blue": "Rare"
+  },
+  "universe": {
+    "locked": "Data classified",
+    "active": "Access granted",
+    "backToTerminal": "Return to Terminal",
+    "connection": "Connection",
+    "stable": "Stable",
+    "characters": "Characters",
+    "floraFauna": "Flora & Fauna"
+  },
+  "artefacts": {
+    "title": "Artifacts",
+    "subtitle": "Catalog of artifacts found in sector Amnesis",
+    "back": "Back to Artifacts",
+    "owner": "Owner",
+    "type": "Artifact"
+  },
+  "timeline": {
+    "title": "Timeline",
+    "subtitle": "Key events in the history of sector Amnesis"
+  },
+  "factions": {
+    "title": "Factions",
+    "subtitle": "Organizations operating within sector Amnesis",
+    "back": "Back to Factions",
+    "members": "Members",
+    "type": "Faction"
+  },
+  "admin": {
+    "login": "Admin Login",
+    "username": "Username",
+    "password": "Password",
+    "save": "Save",
+    "delete": "Delete",
+    "confirmDelete": "Are you sure?",
+    "dashboard": "Dashboard",
+    "characters": "Characters",
+    "floraFauna": "Flora & Fauna",
+    "artefacts": "Artifacts",
+    "timeline": "Timeline",
+    "factions": "Factions",
+    "siteContent": "Site Content",
+    "universes": "Universes",
+    "newCharacter": "New Character",
+    "editCharacter": "Edit Character",
+    "newArtefact": "New Artifact",
+    "editArtefact": "Edit Artifact",
+    "newFaction": "New Faction",
+    "editFaction": "Edit Faction",
+    "newEvent": "New Event",
+    "editEvent": "Edit Event",
+    "logout": "Logout",
+    "name": "Name",
+    "description": "Description",
+    "owner": "Owner",
+    "members": "Members",
+    "date": "Date",
+    "order": "Order",
+    "status": "Status",
+    "rarity": "Rarity",
+    "universe": "Universe",
+    "actions": "Actions",
+    "new": "New",
+    "edit": "Edit",
+    "backToList": "Back to List"
+  },
+  "search": {
+    "placeholder": "Search characters...",
+    "noResults": "No results found",
+    "results": "Search Results",
+    "searching": "Searching..."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Error",
+    "back": "Back",
+    "close": "Close",
+    "scan": "Scan",
+    "scanOn": "Scan ON"
+  }
+}

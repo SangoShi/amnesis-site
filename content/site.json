@@ -1,0 +1,40 @@
+{
+  "landing": {
+    "titleRu": "SHINAGAVE'S BESTIARY",
+    "titleEn": "SHINAGAVE'S BESTIARY",
+    "subtitleRu": "База данных персонажей",
+    "subtitleEn": "Character Database",
+    "aboutCards": [
+      {
+        "icon": "BookOpen",
+        "titleRu": "Архив",
+        "titleEn": "Archive",
+        "descriptionRu": "Архив и систематизация всех авторских персонажей",
+        "descriptionEn": "Archive and systematization of all original characters"
+      },
+      {
+        "icon": "Database",
+        "titleRu": "Система",
+        "titleEn": "System",
+        "descriptionRu": "Автоматизированная база данных с классификацией и поиском",
+        "descriptionEn": "Automated database with classification and search"
+      },
+      {
+        "icon": "Shield",
+        "titleRu": "Безопасность",
+        "titleEn": "Security",
+        "descriptionRu": "Доступ к полным досье — по запросу автора",
+        "descriptionEn": "Access to full dossiers — by author's request"
+      }
+    ]
+  },
+  "footer": {
+    "telegram": "t.me/sangoshi",
+    "copyright": "Shinagave's Bestiary"
+  },
+  "sections": {
+    "hero": { "enabled": true, "order": 1 },
+    "worlds": { "enabled": true, "order": 2 },
+    "about": { "enabled": true, "order": 3 }
+  }
+}

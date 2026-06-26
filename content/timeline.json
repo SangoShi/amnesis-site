@@ -1,0 +1,56 @@
+[
+  {
+    "date": "Год 0",
+    "titleRu": "Пробуждение",
+    "titleEn": "The Awakening",
+    "descriptionRu": "Первые нумары появились в секторе Амнезис. Точное происхождение неизвестно.",
+    "descriptionEn": "First numars appeared in sector Amnesis. Exact origin unknown.",
+    "universe": "amnesis",
+    "characters": []
+  },
+  {
+    "date": "Год 47",
+    "titleRu": "Великий Раскол",
+    "titleEn": "The Great Schism",
+    "descriptionRu": "Нумары разделились на фракции. Начало эпохи конфликтов.",
+    "descriptionEn": "Numars divided into factions. Beginning of the conflict era.",
+    "universe": "amnesis",
+    "characters": []
+  },
+  {
+    "date": "Год 112",
+    "titleRu": "Восхождение Императора",
+    "titleEn": "Emperor's Rise",
+    "descriptionRu": "Первый Император нумаров объединил сектор под единым правлением.",
+    "descriptionEn": "First Numar Emperor unified the sector under single rule.",
+    "universe": "amnesis",
+    "characters": ["sango-shinagave"]
+  },
+  {
+    "date": "Год 203",
+    "titleRu": "Обнаружение Аномалии",
+    "titleEn": "Anomaly Detection",
+    "descriptionRu": "В секторе обнаружена пространственная аномалия класса Омега.",
+    "descriptionEn": "Omega-class spatial anomaly detected in the sector.",
+    "universe": "amnesis",
+    "characters": ["voidwhisper"]
+  },
+  {
+    "date": "Год 251",
+    "titleRu": "Появление Войдвиспера",
+    "titleEn": "Voidwhisper Emergence",
+    "descriptionRu": "Из эпицентра аномалии появилось неизвестное существо, получившее кодовое имя Войдвиспер.",
+    "descriptionEn": "Unknown entity emerged from anomaly epicenter, codenamed Voidwhisper.",
+    "universe": "amnesis",
+    "characters": ["voidwhisper"]
+  },
+  {
+    "date": "Год 287",
+    "titleRu": "Карантин",
+    "titleEn": "Quarantine",
+    "descriptionRu": "Сектор Амнезис переведён на карантинный режим. Доступ ограничен.",
+    "descriptionEn": "Sector Amnesis placed under quarantine. Access restricted.",
+    "universe": "amnesis",
+    "characters": []
+  }
+]
