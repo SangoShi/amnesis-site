@@ -1,13 +1,11 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
 import { auth } from '@/lib/auth';
-
-const filePath = path.join(process.cwd(), 'content', 'site.json');
+import { getFile, updateFile } from '@/lib/github';
 
 export async function GET() {
-  const data = fs.existsSync(filePath) ? JSON.parse(fs.readFileSync(filePath, 'utf-8')) : {};
-  return NextResponse.json(data);
+  const file = await getFile('content/site.json');
+  if (!file) return NextResponse.json({});
+  return NextResponse.json(JSON.parse(file.content));
 }
 
 export async function PUT(request: Request) {
@@ -15,7 +13,11 @@ export async function PUT(request: Request) {
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const body = await request.json();
-  fs.writeFileSync(filePath, JSON.stringify(body, null, 2), 'utf-8');
+  const file = await getFile('content/site.json');
+  if (!file) return NextResponse.json({ error: 'Not found' }, { status: 404 });
 
-  return NextResponse.json({ success: true });
+  const ok = await updateFile('content/site.json', JSON.stringify(body, null, 2), file.sha, 'update: site content');
+  return ok
+    ? NextResponse.json({ success: true })
+    : NextResponse.json({ error: 'Failed' }, { status: 500 });
 }

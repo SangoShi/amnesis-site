@@ -1,53 +1,62 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
 import { auth } from '@/lib/auth';
-
-const filePath = path.join(process.cwd(), 'content', 'timeline.json');
-
-function readTimeline() {
-  if (!fs.existsSync(filePath)) return [];
-  return JSON.parse(fs.readFileSync(filePath, 'utf-8'));
-}
-
-function writeTimeline(data: unknown[]) {
-  fs.writeFileSync(filePath, JSON.stringify(data, null, 2), 'utf-8');
-}
+import { getFile, updateFile } from '@/lib/github';
 
 export async function GET() {
-  return NextResponse.json(readTimeline());
+  const file = await getFile('content/timeline.json');
+  if (!file) return NextResponse.json([]);
+  return NextResponse.json(JSON.parse(file.content));
 }
 
 export async function POST(request: Request) {
   const session = await auth();
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
   const body = await request.json();
-  const timeline = readTimeline();
+  const file = await getFile('content/timeline.json');
+  const timeline = file ? JSON.parse(file.content) : [];
   timeline.push(body);
-  writeTimeline(timeline);
-  return NextResponse.json({ success: true });
+
+  const ok = await updateFile('content/timeline.json', JSON.stringify(timeline, null, 2), file!.sha, 'feat: add timeline event');
+  return ok
+    ? NextResponse.json({ success: true })
+    : NextResponse.json({ error: 'Failed' }, { status: 500 });
 }
 
 export async function PUT(request: Request) {
   const session = await auth();
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
   const { index, data } = await request.json();
-  const timeline = readTimeline();
+  const file = await getFile('content/timeline.json');
+  if (!file) return NextResponse.json({ error: 'Not found' }, { status: 404 });
+
+  const timeline = JSON.parse(file.content);
   if (index >= 0 && index < timeline.length) {
     timeline[index] = data;
-    writeTimeline(timeline);
   }
-  return NextResponse.json({ success: true });
+
+  const ok = await updateFile('content/timeline.json', JSON.stringify(timeline, null, 2), file.sha, 'update: timeline event');
+  return ok
+    ? NextResponse.json({ success: true })
+    : NextResponse.json({ error: 'Failed' }, { status: 500 });
 }
 
 export async function DELETE(request: Request) {
   const session = await auth();
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
   const { index } = await request.json();
-  const timeline = readTimeline();
+  const file = await getFile('content/timeline.json');
+  if (!file) return NextResponse.json({ error: 'Not found' }, { status: 404 });
+
+  const timeline = JSON.parse(file.content);
   if (index >= 0 && index < timeline.length) {
     timeline.splice(index, 1);
-    writeTimeline(timeline);
   }
-  return NextResponse.json({ success: true });
+
+  const ok = await updateFile('content/timeline.json', JSON.stringify(timeline, null, 2), file.sha, 'delete: timeline event');
+  return ok
+    ? NextResponse.json({ success: true })
+    : NextResponse.json({ error: 'Failed' }, { status: 500 });
 }

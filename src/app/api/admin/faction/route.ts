@@ -1,20 +1,19 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
 import { auth } from '@/lib/auth';
-
-const dir = path.join(process.cwd(), 'content', 'factions');
+import { listFiles, createFile } from '@/lib/github';
 
 export async function GET() {
-  const files = fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => f.endsWith('.mdx')) : [];
-  return NextResponse.json({ files });
+  const files = await listFiles('content/factions');
+  return NextResponse.json({ files: files.map((f) => f.name) });
 }
 
 export async function POST(request: Request) {
   const session = await auth();
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+
   const { slug, content } = await request.json();
-  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-  fs.writeFileSync(path.join(dir, `${slug}.mdx`), content, 'utf-8');
-  return NextResponse.json({ success: true, slug });
+  const ok = await createFile(`content/factions/${slug}.mdx`, content, `feat: add faction ${slug}`);
+  return ok
+    ? NextResponse.json({ success: true, slug })
+    : NextResponse.json({ error: 'Failed' }, { status: 500 });
 }

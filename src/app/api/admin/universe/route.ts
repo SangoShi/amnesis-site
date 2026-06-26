@@ -1,13 +1,11 @@
 import { NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
 import { auth } from '@/lib/auth';
-
-const filePath = path.join(process.cwd(), 'content', 'universes.json');
+import { getFile, updateFile } from '@/lib/github';
 
 export async function GET() {
-  const data = fs.existsSync(filePath) ? JSON.parse(fs.readFileSync(filePath, 'utf-8')) : [];
-  return NextResponse.json(data);
+  const file = await getFile('content/universes.json');
+  if (!file) return NextResponse.json([]);
+  return NextResponse.json(JSON.parse(file.content));
 }
 
 export async function POST(request: Request) {
@@ -15,10 +13,18 @@ export async function POST(request: Request) {
   if (!session) return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
 
   const body = await request.json();
-  const universes = fs.existsSync(filePath) ? JSON.parse(fs.readFileSync(filePath, 'utf-8')) : [];
+  const file = await getFile('content/universes.json');
+  const universes = file ? JSON.parse(file.content) : [];
   universes.push(body);
   universes.sort((a: { order: number }, b: { order: number }) => a.order - b.order);
-  fs.writeFileSync(filePath, JSON.stringify(universes, null, 2), 'utf-8');
 
-  return NextResponse.json({ success: true });
+  const ok = await updateFile(
+    'content/universes.json',
+    JSON.stringify(universes, null, 2),
+    file!.sha,
+    `feat: add universe ${body.slug}`
+  );
+  return ok
+    ? NextResponse.json({ success: true })
+    : NextResponse.json({ error: 'Failed' }, { status: 500 });
 }
