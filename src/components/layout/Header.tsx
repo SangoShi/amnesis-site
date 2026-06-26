@@ -60,9 +60,10 @@ export default function Header() {
       <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-6 md:py-4">
         <Link
           href="/"
-          className="text-xl uppercase tracking-wider text-accent transition-colors hover:text-green md:text-2xl"
+          className="flex items-center gap-2 text-xl uppercase tracking-wider text-accent transition-colors hover:text-green md:text-2xl"
           onClick={() => { if (enabled) playClickNav(); }}
         >
+          <img src="/images/logo.png" alt="Logo" className="h-8 w-8 md:h-10 md:w-10" style={{ imageRendering: 'pixelated', borderRadius: 'var(--radius-sm)' }} />
           Bestiary
         </Link>
 
