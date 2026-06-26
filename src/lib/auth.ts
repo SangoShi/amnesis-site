@@ -7,7 +7,8 @@ export const {
   signIn,
   signOut,
 } = NextAuth({
-  secret: process.env.NEXTAUTH_SECRET,
+  secret: process.env.NEXTAUTH_SECRET || 'amnesis-fallback-secret-key-2024',
+  trustHost: true,
   providers: [
     CredentialsProvider({
       name: 'Credentials',
